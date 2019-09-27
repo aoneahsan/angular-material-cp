@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <div>Logo</div>
+    <div fxHide.xs fxFlex fxLayout fxLayoutAlign="end" fxLayoutGap="10px">
+        <a routerLink="/sign-in">Sign-In</a>
+        <a routerLink="/sign-up">Sign-Up</a>
+        <a routerLink="/trainings">Trainings</a>
+        <a>Logout</a>
+    </div>
+    <div fxHide.gt-xs fxFlex fxLayout fxLayoutAlign="end" fxLayoutGap="10px">
+        <button mat-icon-button (click)="sideBarToggle()">
+            <mat-icon>menu</mat-icon>
+            <p></p>
+        </button>
+    </div>
+</mat-toolbar>
