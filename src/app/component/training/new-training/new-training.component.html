@@ -1,1 +1,18 @@
-<p>new-training works!</p>
+<div class="new-training-con p-4 w-100" fxLayout="row" fxLayoutAlign="center">
+    <form (ngSubmit)="onTrainingStart(f)" #f="ngForm">
+        <mat-card fxFlex="400px" fxFlex.xs="100%">
+            <mat-card-title fxLayoutAlign="center">New Training</mat-card-title>
+            <mat-card-content fxLayoutAlign="center">
+                <mat-form-field>
+                    <mat-label>Select Field Lable</mat-label>
+                    <mat-select placeholder="Select Field Placeholder" ngModel name="selectedExercise" required>
+                        <mat-option *ngFor="let item of exercises" [value]="item.id">{{ item.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions fxLayoutAlign="center">
+                <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">start</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

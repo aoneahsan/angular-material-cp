@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './module/material-module/material-module';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -17,6 +18,9 @@ import { PastTrainingsComponent } from './component/training/past-trainings/past
 import { HomeComponent } from './component/home/home.component';
 import { HeaderComponent } from './component/navigation/header/header.component';
 import { SideBarComponent } from './component/navigation/side-bar/side-bar.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { UserComponent } from './component/user/user.component';
+import { StopTrainingComponent } from './component/training/current-training/stop-training/stop-training.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { SideBarComponent } from './component/navigation/side-bar/side-bar.compo
     PastTrainingsComponent,
     HomeComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+    DashboardComponent,
+    UserComponent,
+    StopTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +44,11 @@ import { SideBarComponent } from './component/navigation/side-bar/side-bar.compo
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [StopTrainingComponent]
 })
 export class AppModule { }

@@ -1,0 +1,6 @@
+<section class="p-4 text-center">
+    <h4>Are You Sure!</h4>
+    <mat-dialog-content class="mb-3">You are already {{ passedData.progress }}% done.</mat-dialog-content>
+    <button mat-raised-button class="mr-3" color="warn" [mat-dialog-close]="true">Yes</button>
+    <button mat-raised-button class="" color="primary" [mat-dialog-close]="false">No</button>
+</section>

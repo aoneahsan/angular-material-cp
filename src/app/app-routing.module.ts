@@ -8,6 +8,10 @@ import { TrainingComponent } from './component/training/training.component';
 import { NewTrainingComponent } from './component/training/new-training/new-training.component';
 import { CurrentTrainingComponent } from './component/training/current-training/current-training.component';
 import { PastTrainingsComponent } from './component/training/past-trainings/past-trainings.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { UnAuthGuardService } from './service/auth/unauth-guard-service';
+import { AuthGuardService } from './service/auth/auth-guard-service';
+import { UserComponent } from './component/user/user.component';
 
 
 const routes: Routes = [
@@ -18,19 +22,22 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'sign-in',
-    component: SignInComponent
+    component: SignInComponent,
+    canActivate: [UnAuthGuardService]
   },
   {
     path: 'sign-up',
-    component: SignUpComponent
+    component: SignUpComponent,
+    canActivate: [UnAuthGuardService]
   },
   {
     path: 'trainings',
     component: TrainingComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
         path: 'new',
@@ -45,6 +52,20 @@ const routes: Routes = [
         component: PastTrainingsComponent
       }
     ]
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "user",
+    component: UserComponent
+  },
+  {
+    path: "**",
+    redirectTo: "/",
+    pathMatch: "full"
   }
 ];
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/service/auth/auth-service';
+
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,13 +12,24 @@ import { NgForm } from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  error: string = "";
+  actionObservable: Observable<any>;
+
+  constructor(private _authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    this._authService.signIn(form.value).subscribe(
+      data => {
+        console.log("new coming data (from signIn component) = ", data);
+        this.router.navigate(['/']);
+      },
+      error => {
+        this.error = error;
+      }
+    )
   }
 
 }

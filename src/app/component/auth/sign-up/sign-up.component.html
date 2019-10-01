@@ -1,5 +1,12 @@
 <section>
+    <div class="alert alert-danger text-center" *ngIf="error">
+        The given data was invalid.
+    </div>
     <form class="auth-form" fxLayoutAlign="center center" fxLayout="column" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field hintLabel="Name">
+            <input type="text" matInput placeholder="Name" name="name" ngModel required>
+            <mat-error>Required</mat-error>
+        </mat-form-field>
         <mat-form-field hintLabel="Email">
             <input type="email" matInput placeholder="Email" name="email" ngModel required email>
             <mat-hint align="end">Valid Email</mat-hint>
@@ -11,13 +18,6 @@
             <mat-error *ngIf="pwInput.value?.length < 6">Lenght more then 6</mat-error>
             <mat-error>Required</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input type="text" matInput [matDatepicker]="picker" required ngModel name="birthdate" [min]="maxDate">
-            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error>Required</mat-error>
-        </mat-form-field>
-        <mat-checkbox required name="agree" ngModel color="primary">Agree To Tearms</mat-checkbox>
         <br>
         <button mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
     </form>
