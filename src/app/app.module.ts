@@ -21,6 +21,8 @@ import { SideBarComponent } from './component/navigation/side-bar/side-bar.compo
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UserComponent } from './component/user/user.component';
 import { StopTrainingComponent } from './component/training/current-training/stop-training/stop-training.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { StopTrainingComponent } from './component/training/current-training/sto
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],

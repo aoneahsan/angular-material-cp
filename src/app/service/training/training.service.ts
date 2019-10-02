@@ -20,7 +20,9 @@ export class TrainingService {
     ];
 
     pastExercises: ExerciseModel[] = [
-        {id: 1, name: "name 1", duration: 6, calories: 40}
+        {id: 1, name: "name 1", duration: 62, calories: 240, state: "completed"},
+        {id: 2, name: "name 2", duration: 26, calories: 430, state: "cancelled"},
+        {id: 3, name: "name 3", duration: 36, calories: 80}
     ];
 
     getAvailableExercises() {
