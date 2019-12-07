@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { User } from './user-model';
+import { User } from './user-Model';
 
 // interface to recive data
 
@@ -15,12 +15,12 @@ import { User } from './user-model';
 export class AuthService {
 
     url: string = "http://angular-material-laravel.ahsan/api/";
-    
+
     User = new BehaviorSubject<User>(null);
     userId: number;
     userDetails;
-    constructor(private _http: HttpClient, private router: Router) {}    
-    
+    constructor(private _http: HttpClient, private router: Router) {}
+
     // signin functions
     signIn(data) {
         return this._http.post(
@@ -102,16 +102,16 @@ export class AuthService {
         if(!userData) {
             return;
         }
-        
+
         const loadUser = new User(
-            userData.id, 
+            userData.id,
             userData.email,
             userData._tokken,
         );
 
         if (loadUser.token) {
             // console.log(loadUser);
-            this.User.next(loadUser);            
+            this.User.next(loadUser);
         }
     }
 

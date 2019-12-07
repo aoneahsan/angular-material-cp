@@ -4,7 +4,7 @@ export class User {
         public email: string,
         private _tokken: string) {}
 
-    get token() {        
+    get token() {
         return this._tokken;
     }
 }
